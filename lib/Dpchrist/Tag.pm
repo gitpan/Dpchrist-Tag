@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: Tag.pm,v 1.29 2010-02-27 21:15:10 dpchrist Exp $
+# $Id: Tag.pm,v 1.30 2010-11-02 18:51:46 dpchrist Exp $
 #######################################################################
 # package/ Export:
 #----------------------------------------------------------------------
@@ -29,7 +29,7 @@ our @EXPORT_OK = (
 
 our @EXPORT = qw();
 
-our $VERSION = sprintf "%d.%03d", q$Revision: 1.29 $ =~ /(\d+)/g;
+our $VERSION = sprintf "%d.%03d", q$Revision: 1.30 $ =~ /(\d+)/g;
 
 #######################################################################
 # uses:
@@ -363,7 +363,7 @@ None by default.
 
 All of the subroutines may be imported by using the ':all' tag:
 
-    use Dpchrist::Debug		qw( :all );
+    use Dpchrist::Tag		qw( :all );
 
 See 'perldoc Export' for everything in between.
 
