@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: Makefile.PL,v 1.18 2010-11-25 02:44:11 dpchrist Exp $
+# $Id: Makefile.PL,v 1.19 2010-11-25 18:33:37 dpchrist Exp $
 #
 # Copyright 2010 by David Paul Christensen dpchrist@holgerdanske.com
 #
@@ -23,6 +23,7 @@ use ExtUtils::MakeMaker;
 use Dpchrist::Module::MakefilePL (
     -mcpani		=> $ENV{CPAN_AUTHORID},
     -pod2html	 	=> qw( lib/Dpchrist/Tag.pm ),
+    -readme	 	=> qw( lib/Dpchrist/Tag.pm ),
     -release		=> $ENV{RELEASE_ROOT},
 );
 
@@ -30,13 +31,13 @@ WriteMakefile(
     NAME          => 'Dpchrist::Tag',
     VERSION_FROM  => 'lib/Dpchrist/Tag.pm',
     PREREQ_PM     => {
-	'Dpchrist::Is'		=> 1.017,
-	'Dpchrist::Module'	=> 1.016,
+	'Dpchrist::Is'		=> 1.024,
+	'Dpchrist::Module'	=> 1.021,
 	'feature'		=> 0,
     },
     ABSTRACT_FROM => 'lib/Dpchrist/Tag.pm',
-    AUTHOR        => 'David Paul Christensen ' .
-		     '<dpchrist@holgerdanske.com>',
+    AUTHOR        =>
+	'David Paul Christensen <dpchrist@holgerdanske.com>',
     clean		=> {
 	FILES => q( *~tmp */*~tmp Dpchrist* ),
     },
