@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Dpchrist-Tag
-version:            1.033
+version:            1.034
 abstract:           labels for debug, log, etc., messages
 author:
     - David Paul Christensen <dpchrist@holgerdanske.com>
@@ -11,9 +11,13 @@ configure_requires:
 build_requires:
     ExtUtils::MakeMaker:  0
 requires:
-    Dpchrist::Is:      1.025
-    Dpchrist::Module:  1.023
+    Dpchrist::Is:      1.026
+    Dpchrist::Module:  1.025
     feature:           0
+    Getopt::Long:      0
+    Pod::Html:         0
+    Pod::Text:         0
+    Pod::Usage:        0
 no_index:
     directory:
         - t
