@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: Makefile.PL,v 1.21 2010-11-27 03:37:59 dpchrist Exp $
+# $Id: Makefile.PL,v 1.22 2010-11-27 07:37:16 dpchrist Exp $
 #
 # Copyright 2010 by David Paul Christensen dpchrist@holgerdanske.com
 #
@@ -36,8 +36,8 @@ WriteMakefile(
     NAME          => 'Dpchrist::Tag',
     VERSION_FROM  => 'lib/Dpchrist/Tag.pm',
     PREREQ_PM     => {
-	Dpchrist::Is		=> 1.026,
-	Dpchrist::Module	=> 1.025,
+	Dpchrist::Is		=> 1.027,
+	Dpchrist::Module	=> 1.026,
 	Getopt::Long		=> 0,
 	Pod::Html		=> 0,
 	Pod::Text		=> 0,

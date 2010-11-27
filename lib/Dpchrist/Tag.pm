@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: Tag.pm,v 1.34 2010-11-27 03:37:59 dpchrist Exp $
+# $Id: Tag.pm,v 1.35 2010-11-27 07:37:16 dpchrist Exp $
 #######################################################################
 # package/ Export:
 #----------------------------------------------------------------------
@@ -28,7 +28,7 @@ our @EXPORT_OK = (
 
 our @EXPORT = qw();
 
-our $VERSION = sprintf "%d.%03d", q$Revision: 1.34 $ =~ /(\d+)/g;
+our $VERSION = sprintf "%d.%03d", q$Revision: 1.35 $ =~ /(\d+)/g;
 
 #######################################################################
 # uses:
@@ -47,7 +47,7 @@ Dpchrist::Tag - labels for debug, log, etc., messages
 
 =head1 DESCRIPTION
 
-This documentation describes module revision $Revision: 1.34 $.
+This documentation describes module revision $Revision: 1.35 $.
 
 
 This is alpha test level software
