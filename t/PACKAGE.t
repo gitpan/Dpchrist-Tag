@@ -1,4 +1,4 @@
-# $Id: 3_PACKAGE.t,v 1.4 2009-11-22 02:35:19 dpchrist Exp $
+# $Id: PACKAGE.t,v 1.4 2009-11-22 02:35:19 dpchrist Exp $
 
 use strict;
 use warnings;

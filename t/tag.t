@@ -1,4 +1,4 @@
-# $Id: 2_tag.t,v 1.16 2009-11-26 22:38:46 dpchrist Exp $
+# $Id: tag.t,v 1.16 2009-11-26 22:38:46 dpchrist Exp $
 
 use Test::More tests => 31;
 

@@ -3,14 +3,15 @@ MANIFEST
 README
 Makefile.PL
 lib/Dpchrist/Tag.pm
-t/0_compile_modules.t
-t/1_Dpchrist-Tag.t
-t/2_tag.t
-t/3_FILE.t
-t/3_LINE.t
-t/3_PACKAGE.t
-t/3_SUB.t
-t/4_TAG.t
-t/9_pod.t
-t/9_prereq.t
+t/Dpchrist-Tag.t
+t/FILE.t
+t/LINE.t
+t/PACKAGE.t
+t/SUB.t
+t/TAG.t
+t/tag.t
+t/test-compile-all_pm_files_ok.t
+t/test-pod-all_pod_files_ok.t
+t/test-prereq-prereq_ok.t
+t/test_manifest
 META.yml                                 Module meta-data (added by MakeMaker)

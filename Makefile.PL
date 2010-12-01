@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: Makefile.PL,v 1.22 2010-11-27 07:37:16 dpchrist Exp $
+# $Id: Makefile.PL,v 1.24 2010-12-01 07:35:04 dpchrist Exp $
 #
 # Copyright 2010 by David Paul Christensen dpchrist@holgerdanske.com
 #
@@ -18,37 +18,41 @@
 # USA.
 #######################################################################
 
+package Dpchrist::ExtUtils::MakeMaker;	# for symbols
+
+use ExtUtils::MakeMaker;
+
+eval "use Test::Manifest";
+warn $@ if $@;
+
 eval {
-    require Dpchrist::Module::MakefilePL;
-    
-    import Dpchrist::Module::MakefilePL (
-	-mcpani		=> $ENV{CPAN_AUTHORID},
-	-pod2html 	=> 'lib/Dpchrist/Tag.pm',
-	-readme	 	=> 'lib/Dpchrist/Tag.pm',
-	-release	=> $ENV{RELEASE_ROOT},
+    require Dpchrist::ExtUtils::MakeMaker;
+    import  Dpchrist::ExtUtils::MakeMaker (
+	postamble => sub {
+	    my ($o, $prev) = @_;
+	    return join('',
+		$prev,
+		mcpani  ($o, $ENV{CPAN_AUTHORID}),
+		pod2html($o, 'lib/Dpchrist/Tag.pm'),
+		readme  ($o, 'lib/Dpchrist/Tag.pm'),
+		release ($o, $ENV{RELEASE_ROOT}),
+	    );
+	},
     );
 };
 warn $@ if $@;
-
-use ExtUtils::MakeMaker;
 
 WriteMakefile(
     NAME          => 'Dpchrist::Tag',
     VERSION_FROM  => 'lib/Dpchrist/Tag.pm',
     PREREQ_PM     => {
-	Dpchrist::Is		=> 1.027,
-	Dpchrist::Module	=> 1.026,
-	Getopt::Long		=> 0,
-	Pod::Html		=> 0,
-	Pod::Text		=> 0,
-	Pod::Usage		=> 0,
-	feature			=> 0,
+	Dpchrist::Is	=> 1.028,
     },
     ABSTRACT_FROM => 'lib/Dpchrist/Tag.pm',
     AUTHOR        =>
 	'David Paul Christensen <dpchrist@holgerdanske.com>',
     clean		=> {
-	FILES => q( *~tmp */*~tmp Dpchrist* ),
+	FILES => q( *~tmp */*~tmp *.tar debug.log ),
     },
 );
 

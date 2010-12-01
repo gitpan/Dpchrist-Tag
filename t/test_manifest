@@ -1,0 +1,10 @@
+test-compile-all_pm_files_ok.t
+Dpchrist-Tag.t
+tag.t
+FILE.t
+LINE.t
+PACKAGE.t
+SUB.t
+TAG.t
+test-pod-all_pod_files_ok.t
+test-prereq-prereq_ok.t
