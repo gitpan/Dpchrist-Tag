@@ -2,7 +2,7 @@ NAME
     Dpchrist::Tag - labels for debug, log, etc., messages
 
 DESCRIPTION
-    This documentation describes module revision $Revision: 1.36 $.
+    This documentation describes module revision $Revision: 1.37 $.
 
     This is alpha test level software and may change or disappear at any
     time.
@@ -128,8 +128,6 @@ DESCRIPTION
 
         use Dpchrist::Tag           qw( :all );
 
-    See 'perldoc Export' for everything in between.
-
 INSTALLATION
     Old school:
 
@@ -145,13 +143,6 @@ INSTALLATION
     Complete:
 
         $ cpan Bundle::Dpchrist
-
-    The following warning may be safely ignored:
-
-        Can't locate Dpchrist/Module/MakefilePL.pm in @INC (@INC contains: /
-        etc/perl /usr/local/lib/perl/5.10.0 /usr/local/share/perl/5.10.0 /us
-        r/lib/perl5 /usr/share/perl5 /usr/lib/perl/5.10 /usr/share/perl/5.10
-        /usr/local/lib/site_perl .) at Makefile.PL line 22.
 
   PREREQUISITES
     See Makefile.PL in the source distribution root directory.

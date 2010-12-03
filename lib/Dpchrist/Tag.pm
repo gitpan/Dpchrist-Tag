@@ -1,5 +1,5 @@
 #######################################################################
-# $Id: Tag.pm,v 1.36 2010-11-30 20:57:53 dpchrist Exp $
+# $Id: Tag.pm,v 1.37 2010-12-03 05:13:51 dpchrist Exp $
 #######################################################################
 # package/ Export:
 #----------------------------------------------------------------------
@@ -28,7 +28,7 @@ our @EXPORT_OK = (
 
 our @EXPORT = qw();
 
-our $VERSION = sprintf "%d.%03d", q$Revision: 1.36 $ =~ /(\d+)/g;
+our $VERSION = sprintf "%d.%03d", q$Revision: 1.37 $ =~ /(\d+)/g;
 
 #######################################################################
 # uses:
@@ -47,7 +47,7 @@ Dpchrist::Tag - labels for debug, log, etc., messages
 
 =head1 DESCRIPTION
 
-This documentation describes module revision $Revision: 1.36 $.
+This documentation describes module revision $Revision: 1.37 $.
 
 
 This is alpha test level software
@@ -371,8 +371,6 @@ All of the subroutines may be imported by using the ':all' tag:
 
     use Dpchrist::Tag		qw( :all );
 
-See 'perldoc Export' for everything in between.
-
 
 =head1 INSTALLATION
 
@@ -390,13 +388,6 @@ Minimal:
 Complete:
 
     $ cpan Bundle::Dpchrist
-
-The following warning may be safely ignored:
-
-    Can't locate Dpchrist/Module/MakefilePL.pm in @INC (@INC contains: /
-    etc/perl /usr/local/lib/perl/5.10.0 /usr/local/share/perl/5.10.0 /us
-    r/lib/perl5 /usr/share/perl5 /usr/lib/perl/5.10 /usr/share/perl/5.10
-    /usr/local/lib/site_perl .) at Makefile.PL line 22.
 
 
 =head2 PREREQUISITES
