@@ -1,4 +1,4 @@
-# $Id: tag.t,v 1.16 2009-11-26 22:38:46 dpchrist Exp $
+# $Id: tag.t,v 1.17 2010-12-14 00:26:20 dpchrist Exp $
 
 use Test::More tests => 31;
 
@@ -132,7 +132,7 @@ ok(                                                             #     7
     $r[3] eq 'Foo::__ANON__',
     'verify _subroutine(0)'
 ) && ok(							#    11
-    $r[4] =~ /^[\w\/\-\.]+ \d+ __ANON__\(\)  $/,
+    $r[4] =~ /^[\w\\\/\-\.]+ \d+ __ANON__\(\)  $/,
     'verify _tag(0)'
 ) or confess join(" ", __FILE__, __LINE__,
     Data::Dumper->Dump([\@r, $@, __FILE__, $b],
@@ -153,7 +153,7 @@ ok(                                                             #    12
     $r[3] eq 'Bar::bar',
     'verify _subroutine(1)'
 ) && ok(							#    16
-    $r[4] =~ /^[\w\/\-\.]+ \d+ bar\(\)  $/,
+    $r[4] =~ /^[\w\\\/\-\.]+ \d+ bar\(\)  $/,
     'verify _tag(1)'
 ) or confess join(" ", __FILE__, __LINE__,
     Data::Dumper->Dump([\@r, $@, __FILE__, $b],
@@ -174,7 +174,7 @@ ok(                                                             #    17
     $r[3] eq '(eval)',
     'verify _subroutine(2)'
 ) && ok(							#    21
-    $r[4] =~ /^[\w\/\-\.]+ \d+ \(eval\)  $/,
+    $r[4] =~ /^[\w\\\/\-\.]+ \d+ \(eval\)  $/,
     'verify _tag(2)'
 ) or confess join(" ", __FILE__, __LINE__,
     Data::Dumper->Dump([\@r, $@, __FILE__, $b],
@@ -195,7 +195,7 @@ ok(                                                             #    22
     $r[3] eq '',
     'verify _subroutine(3)'
 ) && ok(							#    26
-    $r[4] =~ /^[\w\/\-\.]+ \d+  $/,
+    $r[4] =~ /^[\w\\\/\-\.]+ \d+  $/,
     'verify _tag(3)'
 ) or confess join(" ", __FILE__, __LINE__,
     Data::Dumper->Dump([\@r, $@, __FILE__, $b],
