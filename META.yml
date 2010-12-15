@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Dpchrist-Tag
-version:            1.039
+version:            1.040
 abstract:           labels for debug, log, etc., messages
 author:
     - David Paul Christensen <dpchrist@holgerdanske.com>
@@ -13,7 +13,7 @@ build_requires:
 requires:
     Carp:                 1.08
     Data::Dumper:         2.12114
-    Dpchrist::Is:         1.03
+    Dpchrist::Is:         1.031
     Exporter:             5.62
     ExtUtils::MakeMaker:  6.54
     File::Basename:       2.76
