@@ -1,16 +1,22 @@
-# $Id: SUB.t,v 1.3 2009-11-22 02:35:19 dpchrist Exp $
+# $Id: __SUB__.t,v 1.5 2010-12-20 06:05:19 dpchrist Exp $
 
 use strict;
 use warnings;
 
-use Test::More tests => 9;
+use Test::More tests		=> 9;
 
-use Dpchrist::Tag	qw( :all );
+use Dpchrist::Tag		qw(
+    __SUB__
+    __SUB0__
+    __SUB1__
+    __SUB2__
+);
 
 use Data::Dumper;
-$Data::Dumper::Sortkeys = 1;
+use File::Basename;
 
-$| = 1;
+$|				= 1;
+$Data::Dumper::Sortkeys		= 1;
 
 my @r;
 
@@ -24,7 +30,7 @@ ok(                                                             #     1
 ) && ok(							#     3
     $r[2] eq '',
     'verify level 2 call in main'
-) or print STDERR join(" ", __FILE__, __LINE__,
+) or print STDERR join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([\@r], [qw(*r)])
 );
 
@@ -38,7 +44,7 @@ ok(                                                             #     4
 ) && ok(							#     6
     $r[2] eq '',
     'verify level 2 call to Foo::foo()'
-) or print STDERR join(" ", __FILE__, __LINE__,
+) or print STDERR join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([\@r], [qw(*r)])
 );
 
@@ -52,18 +58,21 @@ ok(                                                             #     7
 ) && ok(							#     9
     $r[2] eq '',
     'verify level 2 call to Bar::bar()'
-) or print STDERR join(" ", __FILE__, __LINE__,
+) or print STDERR join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([\@r], [qw(*r)])
 );
-
-
 
 package Foo;
 
 use strict;
 use warnings;
 
-use Dpchrist::Tag	qw( :all );
+use Dpchrist::Tag		qw(
+    __SUB__
+    __SUB0__
+    __SUB1__
+    __SUB2__
+);
 
 sub foo
 {

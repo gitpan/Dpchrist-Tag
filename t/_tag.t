@@ -1,6 +1,4 @@
-# $Id: tag.t,v 1.17 2010-12-14 00:26:20 dpchrist Exp $
-
-use Test::More tests => 31;
+# $Id: _tag.t,v 1.20 2010-12-20 06:05:19 dpchrist Exp $
 
 package Foo;
 
@@ -35,6 +33,8 @@ package main;
 use strict;
 use warnings;
 
+use Test::More tests		=> 31;
+
 use Dpchrist::Tag qw( _filename _line _package _subroutine _tag );
 
 use Carp;
@@ -42,9 +42,8 @@ use Data::Dumper;
 use File::Basename;
 use Test::More;
 
-$Data::Dumper::Sortkeys = 1;
-
-$| = 1;
+$|				= 1;
+$Data::Dumper::Sortkeys		= 1;
 
 my $b = basename(__FILE__);
 my $r;
@@ -58,7 +57,7 @@ ok(                                                             #     1
     !defined $r
     && $@ =~ /Argument is not a whole number/,
     'call with no arguments should fail'
-) or confess join(" ", __FILE__, __LINE__,
+) or confess join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([$r, $@], [qw(r @)])
 );
 
@@ -69,7 +68,7 @@ ok(                                                             #     2
     !defined $r
     && $@ =~ /Argument is not a whole number/,
     'call on the undefined value should fail'
-) or confess join(" ", __FILE__, __LINE__,
+) or confess join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([$r, $@], [qw(r @)])
 );
 
@@ -81,7 +80,7 @@ ok(                                                             #     3
     !defined $r
     && $@ =~ /Argument is not a whole number/,
     'call on empty string should fail'
-) or confess join(" ", __FILE__, __LINE__,
+) or confess join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([$r, $@], [qw(r @)])
 );
 
@@ -92,7 +91,7 @@ ok(                                                             #     4
     !defined $r
     && $@ =~ /Argument is not a whole number/,
     'call on non-numeric string should fail'
-) or confess join(" ", __FILE__, __LINE__,
+) or confess join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([$r, $@], [qw(r @)])
 );
 
@@ -103,7 +102,7 @@ ok(                                                             #     5
     !defined $r
     && $@ =~ /Argument is not a whole number/,
     'call on negative integer should fail',
-) or confess join(" ", __FILE__, __LINE__,
+) or confess join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([$r, $@], [qw(r @)])
 );
 
@@ -114,7 +113,7 @@ ok(                                                             #     6
     !defined $r
     && $@ =~ /Argument is not a whole number/,
     'call with floating point number should fail',
-) or confess join(" ", __FILE__, __LINE__,
+) or confess join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([$r, $@], [qw(r @)])
 );
 
@@ -123,7 +122,7 @@ ok(                                                             #     7
     $r[0] eq __FILE__,
     'verify _filename(0)'
 ) && ok(							#     8
-    13 < $r[1] && $r[1] < 21,
+    $r[1] == 13,
     'verify _line(0)'
 ) && ok(							#     9
     $r[2] eq 'Foo',
@@ -134,7 +133,7 @@ ok(                                                             #     7
 ) && ok(							#    11
     $r[4] =~ /^[\w\\\/\-\.]+ \d+ __ANON__\(\)  $/,
     'verify _tag(0)'
-) or confess join(" ", __FILE__, __LINE__,
+) or confess join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([\@r, $@, __FILE__, $b],
                      [qw(*r   @  __FILE__   b)])
 );
@@ -144,7 +143,7 @@ ok(                                                             #    12
     $r[0] eq __FILE__,
     'verify _filename(1)'
 ) && ok(							#    13
-    $r[1] == 30,
+    $r[1] == 28,
     'verify _line(1)'
 ) && ok(							#    14
     $r[2] eq 'Bar',
@@ -155,7 +154,7 @@ ok(                                                             #    12
 ) && ok(							#    16
     $r[4] =~ /^[\w\\\/\-\.]+ \d+ bar\(\)  $/,
     'verify _tag(1)'
-) or confess join(" ", __FILE__, __LINE__,
+) or confess join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([\@r, $@, __FILE__, $b],
                      [qw(*r   @  __FILE__   b)])
 );
@@ -165,7 +164,7 @@ ok(                                                             #    17
     $r[0] eq __FILE__,
     'verify _filename(2)'
 ) && ok(							#    18
-    $r[1] == 163,
+    $r[1] == 162,
     'verify _line(2)'
 ) && ok(							#    19
     $r[2] eq 'main',
@@ -176,7 +175,7 @@ ok(                                                             #    17
 ) && ok(							#    21
     $r[4] =~ /^[\w\\\/\-\.]+ \d+ \(eval\)  $/,
     'verify _tag(2)'
-) or confess join(" ", __FILE__, __LINE__,
+) or confess join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([\@r, $@, __FILE__, $b],
                      [qw(*r   @  __FILE__   b)])
 );
@@ -186,7 +185,7 @@ ok(                                                             #    22
     $r[0] eq __FILE__,
     'verify _filename(3)'
 ) && ok(							#    23
-    $r[1] == 184,
+    $r[1] == 183,
     'verify _line(3)'
 ) && ok(							#    24
     $r[2] eq 'main',
@@ -197,7 +196,7 @@ ok(                                                             #    22
 ) && ok(							#    26
     $r[4] =~ /^[\w\\\/\-\.]+ \d+  $/,
     'verify _tag(3)'
-) or confess join(" ", __FILE__, __LINE__,
+) or confess join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([\@r, $@, __FILE__, $b],
                      [qw(*r   @  __FILE__   b)])
 );
@@ -218,7 +217,7 @@ ok(                                                             #    27
 ) && ok(							#    31
     $r[4] eq '',
     'verify _tag(4)'
-) or confess join(" ", __FILE__, __LINE__,
+) or confess join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([\@r, $@, __FILE__, $b],
                      [qw(*r   @  __FILE__   b)])
 );

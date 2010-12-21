@@ -1,75 +1,83 @@
-# $Id: TAG.t,v 1.12 2009-11-26 22:38:46 dpchrist Exp $
-
-use Test::More tests => 9;
+# $Id: __FILE__.t,v 1.5 2010-12-20 06:05:19 dpchrist Exp $
 
 use strict;
 use warnings;
 
-use Carp;
+use Test::More tests		=> 9;
+
+use Dpchrist::Tag		qw(
+    __FILE0__
+    __FILE1__
+    __FILE2__
+);
+
 use Data::Dumper;
-use Dpchrist::Tag	qw( :all );
+use File::Basename;
 
-$Data::Dumper::Sortkeys = 1;
+$|				= 1;
+$Data::Dumper::Sortkeys		= 1;
 
-$| = 1;
-
+my $f = __FILE__;
 my @r;
 
-@r = (__TAG__, __TAG0__, __TAG1__, __TAG2__);
+@r = (__FILE0__, __FILE1__, __FILE2__);
 ok(                                                             #     1
-    $r[0] eq __FILE__ . ' 18  '
-    && $r[1] eq $r[0],
+    $r[0] eq $f,
     'verify level 0 call in main'
 ) && ok(							#     2
-    $r[2] eq '',
+    $r[1] eq '',
     'verify level 1 call in main'
 ) && ok(							#     3
-    $r[3] eq '',
+    $r[2] eq '',
     'verify level 2 call in main'
-) or confess join(" ", __FILE__, __LINE__,
-    Data::Dumper->Dump([\@r], [qw(*r)])
+) or print STDERR join(" ", basename(__FILE__), __LINE__,
+    Data::Dumper->Dump([\@r, $f], [qw(*r f)])
 );
 
 @r = Foo::foo();
 ok(                                                             #     4
-    $r[0] eq __FILE__ . ' 72 foo()  '
-    && $r[1] eq $r[0],
+    $r[0] eq $f,
     'verify level 0 call to Foo::foo()'
 ) && ok(							#     5
-    $r[2] eq __FILE__ . ' 33  ',
+    $r[1] eq $f,
     'verify level 1 call to Foo::foo()'
 ) && ok(							#     6
-    $r[3] eq '',
+    $r[2] eq '',
     'verify level 2 call to Foo::foo()'
-) or confess join(" ", __FILE__, __LINE__,
+) or print STDERR join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([\@r], [qw(*r)])
 );
 
 @r = Bar::bar();
 ok(                                                             #     7
-    $r[0] eq __FILE__ . ' 72 foo()  '
-    && $r[1] eq $r[0],
+    $r[0] eq $f,
     'verify level 0 call to Bar::bar()'
 ) && ok(							#     8
-    $r[2] eq __FILE__ . ' 82 bar()  ',
+    $r[1] eq $f,
     'verify level 1 call to Bar::bar()'
 ) && ok(							#     9
-    $r[3] eq __FILE__ . ' 48  ',
+    $r[2] eq $f,
     'verify level 2 call to Bar::bar()'
-) or confess join(" ", __FILE__, __LINE__,
+) or print STDERR join(" ", basename(__FILE__), __LINE__,
     Data::Dumper->Dump([\@r], [qw(*r)])
 );
+
+
 
 package Foo;
 
 use strict;
 use warnings;
 
-use Dpchrist::Tag	qw( :all );
+use Dpchrist::Tag		qw(
+    __FILE0__
+    __FILE1__
+    __FILE2__
+);
 
 sub foo
 {
-    return __TAG__, __TAG0__, __TAG1__, __TAG2__;
+    return __FILE0__, __FILE1__, __FILE2__;
 }
 
 package Bar;
